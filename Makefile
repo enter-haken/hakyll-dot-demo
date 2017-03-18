@@ -13,5 +13,5 @@ build:
 show:
 	cat _site/index.html
 
-all: clean compile build show
+all: compile build show
 	
