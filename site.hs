@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+import qualified Data.Text as T
 import Hakyll
 import Text.Pandoc
 import System.Process ( readProcess )
@@ -31,5 +32,5 @@ codeBlock cb@(CodeBlock (id, classes, namevals) contents) =
         nothing -> cb
 codeBlock x = x
 
-svg :: String -> String
-svg contents = unsafePerformIO $ readProcess "dot" ["-Tsvg"] contents
+svg :: T.Text -> T.Text
+svg contents = T.pack $ unsafePerformIO $ readProcess "dot" ["-Tsvg"] (T.unpack contents)
